@@ -1,33 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
 import ShopItems from "./ShopItems";
+import ProductContext from "../context/ProductContext";
 
 const ShopList = () => {
+
+    const products = useContext(ProductContext)
 //   interface itemTypes {
 //     id: number;
 //     name: string;
 //     description: string;
 //   }
 
-  const products = [
-    {
-      id: 1,
-      name: "Product1",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit, aperiam porro magni, pariatur, voluptatum necessitatibus minima et quisquam. Enim fuga est nis",
-    },
-    {
-      id: 2,
-      name: "Product1",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit, aperiam porro magni, pariatur, voluptatum necessitatibus minima et quisquam. Enim fuga est nis",
-    },
-    {
-      id: 3,
-      name: "Product1",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit, aperiam porro magni, pariatur, voluptatum necessitatibus minima et quisquam. Enim fuga est nis",
-    },
-  ];
+  
 
   return (
     <div className="row">

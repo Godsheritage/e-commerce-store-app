@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-//   row-gap: 5rem;
   .navbar {
     display: flex;
     h1 {
@@ -30,3 +29,6 @@
   }
 }
 
+.d-flex{
+    row-gap: 5rem;
+}

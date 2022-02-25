@@ -2,21 +2,43 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import ShopList from "./components/ShopList";
 import Footer from "./components/Footer";
-import { BrowserRouter as Router } from "react-router-dom";
-
+import Cart from "./pages/Cart";
+import { ContextProvider } from "./context/ProductContext";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <ContextProvider>
+      <Router>
         <div className="container">
-          <div className="d-flex flex-column justify-content-between">
-          <Navbar />
-          <ShopList />
-          <Footer />
-          </div> 
+          <div className="d-flex flex-column">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Navbar />
+                    <ShopList />
+                    <Footer />
+                  </>
+                }
+              />
+              <Route
+                path="/cart"
+                element={
+                  <>
+                    <Navbar />
+                    <Cart />
+                    <Footer />
+                  </>
+                }
+              />
+            </Routes>
+          </div>
         </div>
-    </Router>
+      </Router>
+    </ContextProvider>
   );
-}
+};
 
 export default App;
