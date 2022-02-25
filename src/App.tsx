@@ -9,9 +9,11 @@ const App: React.FC = () => {
   return (
     <Router>
         <div className="container">
+          <div className="d-flex flex-column justify-content-between">
           <Navbar />
           <ShopList />
           <Footer />
+          </div> 
         </div>
     </Router>
   );

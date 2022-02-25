@@ -30,7 +30,7 @@ const ShopList = () => {
   ];
 
   return (
-    <div>
+    <div className="row">
       {products.map((item) => 
         <ShopItems key = {item.id} items = {item} />
       )}
