@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  row-gap: 15rem;
+  .navbar {
+    display: flex;
+    h1 {
+      font-family: poppins;
+    }
+  }
+  .footer {
+    background-color: #333;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h3 {
+      color: #fff;
+      text-align: center;
+    }
+  }
+}
