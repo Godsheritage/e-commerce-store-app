@@ -16,13 +16,13 @@ const ShopList = () => {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit, aperiam porro magni, pariatur, voluptatum necessitatibus minima et quisquam. Enim fuga est nis",
     },
     {
-      id: 1,
+      id: 2,
       name: "Product1",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit, aperiam porro magni, pariatur, voluptatum necessitatibus minima et quisquam. Enim fuga est nis",
     },
     {
-      id: 1,
+      id: 3,
       name: "Product1",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit, aperiam porro magni, pariatur, voluptatum necessitatibus minima et quisquam. Enim fuga est nis",
@@ -32,7 +32,7 @@ const ShopList = () => {
   return (
     <div>
       {products.map((item) => 
-        <ShopItems items = {item} />
+        <ShopItems key = {item.id} items = {item} />
       )}
     </div>
   );

@@ -7,7 +7,11 @@ interface itemProps {
 
 const shopItems: React.FC<itemProps> = ({items}) => {
   return (
-    <div>shopItems</div>
+    <div className='card'>
+        <h1>{items.name}</h1>
+        <p>{items.description}</p>
+        <button className='btn btn-primary' >Add to cart</button>
+    </div>
   )
 }
 
