@@ -8,24 +8,38 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [products, setProducts] = useState<productTypes[]>([
     {
       id: 1,
-      name: "Product1",
+      name: "Nike-Air Force",
       image:'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/21/978685/1.jpg?4651',
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit, aperiam porro magni, pariatur, voluptatum necessitatibus minima et quisquam. Enim fuga est nis",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit",
+      price:'$300',
+
     },
     {
       id: 2,
-      name: "Product1",
+      name: "Nike-Air Force",
       image:'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/21/978685/1.jpg?4651',
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit, aperiam porro magni, pariatur, voluptatum necessitatibus minima et quisquam. Enim fuga est nis",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit",
+      price:'$300',
+
     },
     {
       id: 3,
-      name: "Product1",
+      name: "Nike-Air Force",
       image:'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/21/978685/1.jpg?4651',
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit, aperiam porro magni, pariatur, voluptatum necessitatibus minima et quisquam. Enim fuga est nis",
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit",
+      price:'$300',
+
+    },
+    {
+      id: 4,
+      name: "Nike-Air Force",
+      image:'https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/21/978685/1.jpg?4651',
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit",
+      price:'$300',
     },
   ]);
 
