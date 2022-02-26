@@ -1,15 +1,11 @@
 import React, { useContext } from "react";
 import ShopItems from "./ShopItems";
 import ProductContext from "../context/ProductContext";
+import { contextTypes } from "../shared/types";
 
-interface itemTypes {
-  id: number;
-  name: string;
-  description: string;
-}
 
 const ShopList: React.FC = () => {
-  const { products } = useContext(ProductContext);
+  const { products } = useContext(ProductContext) as contextTypes;
 
   return (
     <div className="row">

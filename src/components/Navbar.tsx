@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {FaShoppingCart, FaHome} from 'react-icons/fa'
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="navbar">
+    <nav className="navbar bg-warning">
       <h1>E-commerce-App</h1>
       <ul className="nav nav-pills nav-fill">
         <Link to="/" className="nav-link">
-          <li className="nav-item">Home</li>
+          <FaHome className="fa-5x"/>
         </Link>
         <Link to="/cart" className="nav-link">
-          <li className="nav-item">Cart</li>
+          <FaShoppingCart className="fa-5x"/>
         </Link>
       </ul>
     </nav>
