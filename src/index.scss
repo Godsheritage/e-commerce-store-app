@@ -30,11 +30,31 @@
 }
 
 .d-flex{
-    row-gap: 5rem;
+    // row-gap: 5rem;
 }
 .fa-5x{
   font-size: 2rem;
 }
 .itemsPrice{
   color:gray;
+}
+
+.img{
+  height:4rem;
+  width:4rem;
+}
+
+.cartItems{
+  display: flex;
+  border: 1px solid #333;
+  justify-content: space-between;
+  padding:0px 2rem 0px 2rem;
+}
+
+.sub-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap:3rem
+
 }

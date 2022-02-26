@@ -7,7 +7,7 @@ const ShopItems: React.FC<itemProps> = ({ items }) => {
 
   return (
     <div className="col-md-3">
-      <div className="card p-3">
+      <div className="card p-1">
         <img src={items.image} className="card-img-top" alt="products" />
         <div className="card-body">
           <h5 className="card-title">{items.name}</h5>

@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <ContextProvider>
       <Router>
         <div className="container">
-          <div className="d-flex flex-column">
+          <div className="sub-container">
             <Routes>
               <Route
                 path="/"

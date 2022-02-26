@@ -30,6 +30,8 @@ export interface textType {
 export interface cartTypes {
     id:number;
     name:string;
+    image:string;
+    price:string;
 }
 
 
