@@ -1,10 +1,19 @@
 import React, { useState, createContext } from "react";
 
-const ProductContext = createContext();
+interface productTypes {
+  id: number;
+  name: string;
+  description: string;
+}
+interface contextTypes {
+  products: productTypes;
+  value: productTypes[]
+}
 
-export const ContextProvider = ({ children }) => {
-  
-  const [products, setProducts] = useState([
+const ProductContext = React.createContext<contextTypes | null>(null);
+
+export const ContextProvider: React.FC<contextTypes> = ({ children }) => {
+  const [products, setProducts] = useState<productTypes[]>([
     {
       id: 1,
       name: "Product1",
@@ -26,7 +35,7 @@ export const ContextProvider = ({ children }) => {
   ]);
 
   return (
-    <ProductContext.Provider value={{ products }}>
+    <ProductContext.Provider value = {{ products }}>
       {children}
     </ProductContext.Provider>
   );

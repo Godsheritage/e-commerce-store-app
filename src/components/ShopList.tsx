@@ -1,23 +1,21 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import ShopItems from "./ShopItems";
 import ProductContext from "../context/ProductContext";
 
-const ShopList = () => {
+interface itemTypes {
+  id: number;
+  name: string;
+  description: string;
+}
 
-    const products = useContext(ProductContext)
-//   interface itemTypes {
-//     id: number;
-//     name: string;
-//     description: string;
-//   }
-
-  
+const ShopList: React.FC = () => {
+  const { products } = useContext(ProductContext);
 
   return (
     <div className="row">
-      {products.map((item) => 
-        <ShopItems key = {item.id} items = {item} />
-      )}
+      {products.map((item) => (
+        <ShopItems key={item.id} items={item} />
+      ))}
     </div>
   );
 };
