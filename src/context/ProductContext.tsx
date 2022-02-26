@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import { productTypes, contextTypes } from "../shared/types";
+import { productTypes, contextTypes, cartTypes } from "../shared/types";
 
 const ProductContext = createContext<contextTypes | null>(null);
 
@@ -42,12 +42,18 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
       price: "$300",
     },
   ]);
+  
+  const [cartItems, setCartItems] = useState<cartTypes[]>([]);
 
-  const addToCart = () => {
-    console.log(123);
+  const addToCart = (items: productTypes) => {
+    const updCart:cartTypes = {
+      id: items.id,
+      name: items.name,
+    };
+
+    setCartItems([updCart, ...cartItems]);
   };
 
-  const [cartItems, setCartItems] = useState<productTypes[]>([]);
 
   return (
     <ProductContext.Provider value={{ products, addToCart, cartItems }}>

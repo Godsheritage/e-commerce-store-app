@@ -19,12 +19,17 @@ export interface itemProps {
 export interface contextTypes {
     products: productTypes[];
     addToCart: (items:productTypes) => void;
-    cartItems: productTypes[];
+    cartItems: cartTypes[];
 }
 
 export interface textType {
     text:string
-    onClick: () => void;
+    // onClick: (handleClick: void) => void;
+}
+
+export interface cartTypes {
+    id:number;
+    name:string;
 }
 
 
