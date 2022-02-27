@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const Cart: React.FC = () => {
   const { cartItems, removeItem } = useContext(ProductContext) as contextTypes;
 
-  const sum = cartItems.reduce( (total, curVal) => {
-        return total + curVa
+  const sum = cartItems.reduce( (total:number , curVal:number ) => {
+        return total + curVal
     }, 0)
   
 
