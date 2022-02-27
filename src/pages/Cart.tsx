@@ -7,7 +7,7 @@ const Cart: React.FC = () => {
   const { cartItems, removeItem } = useContext(ProductContext) as contextTypes;
 
   const sum = cartItems.reduce( (total, curVal) => {
-        return total + curVal
+        return total + curVa
     }, 0)
   
 
