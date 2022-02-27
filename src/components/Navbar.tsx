@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
   const { cartItems } = useContext(ProductContext) as contextTypes;
 
   return (
-    <nav className="navbar">
+    <nav className="navbar container-fluid">
       <h1 style={{ color: "white" }}>E-commerce-App</h1>
       <ul className="nav nav-pills nav-fill">
         <Link to="/" className="nav-link">

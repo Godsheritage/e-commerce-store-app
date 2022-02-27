@@ -3,7 +3,7 @@ export interface productTypes {
   name: string;
   image: string;
   description: string;
-  price: string;
+  price: number;
 }
 
 export interface itemProps {
@@ -12,7 +12,7 @@ export interface itemProps {
         name: string;
         image: string;
         description: string;
-        price: string;
+        price: number;
     };
 }
 
@@ -32,7 +32,7 @@ export interface cartTypes {
     id:number;
     name:string;
     image:string;
-    price:string;
+    price:number;
 }
 
 export interface sumType {
