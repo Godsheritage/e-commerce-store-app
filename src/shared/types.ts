@@ -20,6 +20,7 @@ export interface contextTypes {
     products: productTypes[];
     addToCart: (items:productTypes) => void;
     cartItems: cartTypes[];
+    removeItem: (id:number) => void
 }
 
 export interface textType {

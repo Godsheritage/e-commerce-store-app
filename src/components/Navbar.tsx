@@ -8,17 +8,16 @@ const Navbar: React.FC = () => {
   const { cartItems } = useContext(ProductContext) as contextTypes;
 
   return (
-    <nav className="navbar bg-warning">
+    <nav className="navbar">
       <h1 style={{ color: "white" }}>E-commerce-App</h1>
       <ul className="nav nav-pills nav-fill">
         <Link to="/" className="nav-link">
-          <FaHome className="fa-5x" />
+          <FaHome className="fa-5x" color = 'white' />
         </Link>
         <Link to="/cart" className="nav-link">
-          <FaShoppingCart className="fa-5x position-relative" />
+          <FaShoppingCart className="fa-5x position-relative" color = 'white' />
           <span className="position-absolute top-10 start-90 translate-middle badge rounded-pill bg-danger">
             {cartItems.length}
-            <span className="visually-hidden">unread messages</span>
           </span>
         </Link>
       </ul>

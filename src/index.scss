@@ -6,6 +6,8 @@
   box-sizing: border-box;
 }
 
+$bgColor:#2d3261;
+
 .container {
   display: flex;
   flex-direction: column;
@@ -17,12 +19,12 @@
     }
   }
   .footer {
-    background-color: #333;
-    height: 10vh;
+    background-color: $bgColor;
+    height: 8vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    h3 {
+    h5 {
       color: #fff;
       text-align: center;
     }
@@ -57,4 +59,11 @@
   justify-content: space-between;
   row-gap:3rem
 
+}
+.navbar{
+  background-color:$bgColor;
+  padding: 1rem;
+}
+.faTimes{
+  margin-top:1.5rem;
 }

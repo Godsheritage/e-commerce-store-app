@@ -42,23 +42,40 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
       price: "$600",
     },
   ]);
-  
+
   const [cartItems, setCartItems] = useState<cartTypes[]>([]);
 
+  const totalSum = () => {
+    // cartItems.reduce(cartItems.price (curVal, total) => total +curVal) 
+    
+  }
+
+
+
+
   const addToCart = (items: productTypes) => {
-    const updCart:cartTypes = {
+    const updCart: cartTypes = {
       id: items.id,
       name: items.name,
       image: items.image,
-      price: items.price
+      price: items.price,
     };
 
     setCartItems([updCart, ...cartItems]);
   };
 
+  const removeItem = (id: number) => {
+    // cartItems.filter( items => items.id !== id )
+
+    if (window.confirm("Are you sure you want to remove item from cart")) {
+      setCartItems(cartItems.filter((items) => items.id !== id));
+    }
+  };
 
   return (
-    <ProductContext.Provider value={{ products, addToCart, cartItems }}>
+    <ProductContext.Provider
+      value={{ products, addToCart, cartItems, removeItem }}
+    >
       {children}
     </ProductContext.Provider>
   );
