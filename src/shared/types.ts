@@ -35,7 +35,10 @@ export interface cartTypes {
     price:string;
 }
 
+export interface sumType {
+    
 
+}
 
 
 // export interface proor {
