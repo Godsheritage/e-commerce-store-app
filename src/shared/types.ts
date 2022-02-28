@@ -22,11 +22,12 @@ export interface contextTypes {
     cartItems: cartTypes[];
     removeItem: (id:number) => void
     sum:number;
+    checkout:() => void;
 }
 
 export interface textType {
     text:string
-    // onClick: (handleClick: void) => void;
+    onClick: () => void;
 }
 
 export interface cartTypes {

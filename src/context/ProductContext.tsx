@@ -60,8 +60,11 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
     return total + curVal.price!;
   }, 0);
 
+  const checkout = () => {
+    console.log(123)
+  }
+
   const removeItem = (id: number) => {
-    // cartItems.filter( items => items.id !== id )
 
     if (window.confirm("Are you sure you want to remove item from cart")) {
       setCartItems(cartItems.filter((items) => items.id !== id));
@@ -70,7 +73,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   return (
     <ProductContext.Provider
-      value={{ products, addToCart, cartItems, removeItem, sum }}
+      value={{ products, addToCart, cartItems, removeItem, sum, checkout }}
     >
       {children}
     </ProductContext.Provider>

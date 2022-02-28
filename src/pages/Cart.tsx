@@ -1,13 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext} from "react";
 import ProductContext from "../context/ProductContext";
 import { contextTypes } from "../shared/types";
 import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Button from "../shared/Button";
 const Cart: React.FC = () => {
-  const { cartItems, removeItem, sum } = useContext(
+  const { cartItems, removeItem, sum, checkout } = useContext(
     ProductContext
   ) as contextTypes;
+
+  
 
   if (cartItems.length === 0) {
     return (
@@ -39,8 +41,7 @@ const Cart: React.FC = () => {
         <hr />
         <div className="d-flex justify-content-between">
           <p className="text-right pt-2">Total: ${sum}</p>
-          {/* <button className="btn btn-primary"> Checkout</button> */}
-          <Button text="Checkout" />
+          <button className="btn btn-primary btn-sm" onClick = {checkout}> Checkout</button>
         </div>
       </div>
     </>
