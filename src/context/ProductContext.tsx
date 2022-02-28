@@ -9,7 +9,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
       id: 1,
       name: "Nike-Air Force",
       image:
-        "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/21/978685/1.jpg?4651",
+        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e777c881-5b62-4250-92a6-362967f54cca/air-force-1-07-womens-shoes-GCkPzr.png",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit",
       price: 300,
@@ -18,7 +18,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
       id: 2,
       name: "Adidas Yeezy",
       image:
-        "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/21/978685/1.jpg?4651",
+        "https://cdn.shopify.com/s/files/1/0255/9429/8467/products/adidas-yeezy-500-taupe-light-GX3605_1_kxawvg_1800x1800.jpg?v=1623052526",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit",
       price: 540,
@@ -27,7 +27,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
       id: 3,
       name: "YEEZY Foam Runner",
       image:
-        "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/21/978685/1.jpg?4651",
+        "https://www.ufs-federation.com/images/h/adidas%20yeezy%20foam%20runner-633kra.jpg",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit",
       price: 1000,
@@ -36,7 +36,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
       id: 4,
       name: "Nike Air Jordan",
       image:
-        "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/21/978685/1.jpg?4651",
+        "https://myalpins.com/1293-thickbox_default/men-nike-air-jordan-1-mid-light-smoke-grey.jpg",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quas sed numquam velit",
       price: 600,
@@ -56,6 +56,10 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
     setCartItems([updCart, ...cartItems]);
   };
 
+  const sum = cartItems.reduce((total, curVal) => {
+    return total + curVal.price!;
+  }, 0);
+
   const removeItem = (id: number) => {
     // cartItems.filter( items => items.id !== id )
 
@@ -66,7 +70,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   return (
     <ProductContext.Provider
-      value={{ products, addToCart, cartItems, removeItem }}
+      value={{ products, addToCart, cartItems, removeItem, sum }}
     >
       {children}
     </ProductContext.Provider>

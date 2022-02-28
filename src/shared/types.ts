@@ -21,6 +21,7 @@ export interface contextTypes {
     addToCart: (items:productTypes) => void;
     cartItems: cartTypes[];
     removeItem: (id:number) => void
+    sum:number;
 }
 
 export interface textType {
