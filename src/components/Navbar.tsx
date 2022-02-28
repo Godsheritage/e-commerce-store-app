@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
         <Link to="/cart" className="nav-link">
           <FaShoppingCart className="fa-5x position-relative" color = 'white' />
           <span className="position-absolute top-10 start-90 translate-middle badge rounded-pill bg-danger">
-            {cartItems.length}
+            {cartItems.length}  
           </span>
         </Link>
       </ul>

@@ -44,12 +44,16 @@ $bgColor:#2d3261;
 .img{
   height:4rem;
   width:4rem;
+  margin-top: 0.5rem;
 }
 
 .cartItems{
-  display: flex;
+  display: grid;
+  grid-template-rows: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  height:5rem;
   border: 1px solid #333;
-  justify-content: space-between;
+  // justify-content: space-between;
   padding:0px 2rem 0px 2rem;
   background-color: rgb(250, 243, 243);
 }
