@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="navbar container-fluid">
-      <h1 style={{ color: "white" }}>E-commerce-App</h1>
+      <h1 style={{ color: "white" }}>Shoe Store</h1>
       <ul className="nav nav-pills nav-fill">
         <Link to="/" className="nav-link">
           <FaHome className="fa-5x" color = 'white' />
