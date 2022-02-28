@@ -4,6 +4,7 @@ import { productTypes, contextTypes, cartTypes } from "../shared/types";
 const ProductContext = createContext<contextTypes | null>(null);
 
 export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
+
   const [products, setProducts] = useState<productTypes[]>([
     {
       id: 1,
