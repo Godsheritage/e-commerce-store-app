@@ -5,7 +5,7 @@ const ProductContext = createContext<contextTypes | null>(null);
 
 export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
-  const [products, setProducts] = useState<productTypes[]>([
+  const [products] = useState<productTypes[]>([
     {
       id: 1,
       name: "Nike-Air Force",
@@ -43,6 +43,12 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
       price: 600,
     },
   ]);
+
+  // useEffect( () => {setProducts([])}, [products])
+
+
+
+  // setProducts([products]) as productTypes
 
   const [cartItems, setCartItems] = useState<cartTypes[]>([]);
 
