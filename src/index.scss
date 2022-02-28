@@ -67,6 +67,7 @@ $bgColor:#2d3261;
   background-color:$bgColor;
   padding: 1rem;
   position: fixed;
+  z-index: 10;
 }
 .faTimes{
   margin-top:1.5rem;
