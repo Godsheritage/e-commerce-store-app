@@ -3,7 +3,6 @@ import ProductContext from "../context/ProductContext";
 import { contextTypes } from "../shared/types";
 import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Button from "../shared/Button";
 const Cart: React.FC = () => {
   const { cartItems, removeItem, sum, checkout } = useContext(
     ProductContext

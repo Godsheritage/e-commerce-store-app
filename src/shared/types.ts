@@ -27,7 +27,6 @@ export interface contextTypes {
 
 export interface textType {
     text:string
-    onClick: () => void;
 }
 
 export interface cartTypes {

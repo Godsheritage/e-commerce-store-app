@@ -61,7 +61,9 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   }, 0);
 
   const checkout = () => {
-    console.log(123)
+    if(window.confirm('Are you sure you want to checkout?')){
+      setCartItems([])
+    }
   }
 
   const removeItem = (id: number) => {
