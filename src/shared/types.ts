@@ -18,6 +18,8 @@ export interface itemProps {
 }
 
 export interface singleProdType   {
+    id:number;
+    name:string;
     image:string;
     description:string;
     price:number;

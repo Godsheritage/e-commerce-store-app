@@ -60,6 +60,8 @@ const navigate = useNavigate();
   // const [singleItem, setSingleItem] = useState(items)
 
   const [singleProd, setSingleProd] = useState<singleProdType>({
+    id:5,
+    name:'Heritage',
     image: "dddddddd",
     description: "ddddd",
     price: 3,
@@ -67,6 +69,8 @@ const navigate = useNavigate();
 
   const prodNavigate = (items: productTypes) => {
     setSingleProd({
+      id:items.id,
+      name:items.name,
       image: items.image,
       description: items.description,
       price: items.price,

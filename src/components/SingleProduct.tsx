@@ -1,14 +1,27 @@
 import React from "react";
+import { useContext } from "react";
+import ProductContext from "../context/ProductContext";
+import { contextTypes } from "../shared/types";
 
 const SingleProduct = () => {
+
+  const {singleProd, addToCart} = useContext(
+    ProductContext
+  ) as contextTypes;
+
+
+
+
   return (
     <div className="row">
       <div className="col-md-6">
-          {/* <img/> */}
+          <img src = {singleProd.image} alt = 'singleprod1' className="img-fluid" />
       </div>
-      <div className="col-md-6">
-          <h1>Product</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore fuga odit voluptas harum ab veritatis quasi consequatur, tempora neque cum illo iure iusto adipisci minima veniam, laboriosam a et recusandae</p>
+      <div className="col-md-6 d-flex flex-column justify-content-evenly">
+          <h1>{singleProd.name}</h1>
+          <p>{singleProd.description}</p>
+          <p className='btn btn-light col-md-2 '>${singleProd.price}</p>
+          <button className='btn btn-danger' onClick = {() => addToCart(singleProd) }>Add to cart</button>
       </div>
     </div>
   );
