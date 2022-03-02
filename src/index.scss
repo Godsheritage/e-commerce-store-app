@@ -52,8 +52,12 @@ $bgColor:#2d3261;
   height:5rem;
   border: 1px solid #333;
   // justify-content: space-between;
-  padding:0px 2rem 0px 2rem;
-  background-color: rgb(250, 243, 243);
+  padding-top:2rem;
+  // justify-content: center;
+  // align-items: center;
+  place-items: center;
+  // padding-top: 0.7rem;
+  // background-color: rgb(250, 243, 243);
 }
 
 .sub-container{
@@ -69,7 +73,7 @@ $bgColor:#2d3261;
   
 }
 .faTimes{
-  margin-top:1.5rem;
+  // margin-top:1.5rem;
 }
 // .card {
 //   background-color: #fff;
@@ -79,3 +83,8 @@ $bgColor:#2d3261;
 //   margin: 20px 0;
 //   position: relative;
 // }
+
+.link{
+  text-decoration: none;
+  color:white;
+}
