@@ -14,7 +14,13 @@ export interface itemProps {
         description: string;
         price: number;
     };
-    prodNavigate : (items:productTypes) => void
+    // prodNavigate : (items:productTypes) => void
+}
+
+export interface singleProdType   {
+    image:string;
+    description:string;
+    price:number;
 }
 
 export interface contextTypes {
@@ -24,6 +30,9 @@ export interface contextTypes {
     removeItem: (id:number) => void
     sum:number;
     checkout:() => void;
+    singleProd:singleProdType
+    prodNavigate: (items:productTypes) => void;
+    
 }
 
 export interface textType {
@@ -37,10 +46,7 @@ export interface cartTypes {
     price:number;
 }
 
-// export interface  {
-    
 
-// }
 
 
 // export interface proor {

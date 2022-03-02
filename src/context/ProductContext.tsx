@@ -1,10 +1,14 @@
 import React, { useState, createContext } from "react";
-import { productTypes, contextTypes, cartTypes } from "../shared/types";
-
+import {
+  productTypes,
+  contextTypes,
+  cartTypes,
+  singleProdType,
+} from "../shared/types";
+import { useNavigate } from "react-router-dom";
 const ProductContext = createContext<contextTypes | null>(null);
 
 export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
-
   const [products] = useState<productTypes[]>([
     {
       id: 1,
@@ -46,12 +50,26 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   // useEffect( () => {setProducts([])}, [products])
 
-
-
   // setProducts([products]) as productTypes
 
   // const [singleItem, setSingleItem] = useState(items)
 
+  const [singleProd, setSingleProd] = useState<singleProdType>({
+    image: "dddddddd",
+    description: "ddddd",
+    price: 3,
+  });
+
+  const navigate = useNavigate();
+
+  const prodNavigate = (items: productTypes) => {
+    setSingleProd({
+      image: items.image,
+      description: items.description,
+      price: items.price,
+    });
+    navigate("/SingleProduct");
+  };
 
   const [cartItems, setCartItems] = useState<cartTypes[]>([]);
 
@@ -71,13 +89,12 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   }, 0);
 
   const checkout = () => {
-    if(window.confirm('Are you sure you want to checkout?')){
-      setCartItems([])
+    if (window.confirm("Are you sure you want to checkout?")) {
+      setCartItems([]);
     }
-  }
+  };
 
   const removeItem = (id: number) => {
-
     if (window.confirm("Are you sure you want to remove item from cart")) {
       setCartItems(cartItems.filter((items) => items.id !== id));
     }
@@ -85,7 +102,16 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   return (
     <ProductContext.Provider
-      value={{ products, addToCart, cartItems, removeItem, sum, checkout }}
+      value={{
+        products,
+        addToCart,
+        cartItems,
+        removeItem,
+        sum,
+        checkout,
+        prodNavigate,
+        singleProd
+      }}
     >
       {children}
     </ProductContext.Provider>
