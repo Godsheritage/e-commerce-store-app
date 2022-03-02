@@ -1,5 +1,5 @@
 export interface productTypes {
-  id: number;
+  id: string;
   name: string;
   image: string;
   description: string;
@@ -8,7 +8,7 @@ export interface productTypes {
 
 export interface itemProps {
     items: {
-        id: number;
+        id: string;
         name: string;
         image: string;
         description: string;
@@ -18,7 +18,7 @@ export interface itemProps {
 }
 
 export interface singleProdType   {
-    id:number;
+    id:string;
     name:string;
     image:string;
     description:string;
@@ -29,7 +29,7 @@ export interface contextTypes {
     products: productTypes[];
     addToCart: (items:productTypes) => void;
     cartItems: cartTypes[];
-    removeItem: (id:number) => void
+    removeItem: (id:string) => void
     sum:number;
     checkout:() => void;
     singleProd:singleProdType
@@ -42,7 +42,7 @@ export interface textType {
 }
 
 export interface cartTypes {
-    id:number;
+    id:string;
     name:string;
     image:string;
     price:number;
