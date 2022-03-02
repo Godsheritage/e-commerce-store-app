@@ -4,7 +4,7 @@ const SingleProduct = () => {
   return (
     <div className="row">
       <div className="col-md-6">
-          <img/>
+          {/* <img/> */}
       </div>
       <div className="col-md-6">
           <h1>Product</h1>

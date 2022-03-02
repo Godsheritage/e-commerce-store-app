@@ -2,16 +2,12 @@ import React, { useContext } from "react";
 import ProductContext from "../context/ProductContext";
 import { contextTypes } from "../shared/types";
 import { FaTimes } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import SingleProduct from "../components/SingleProduct";
+import { Link } from "react-router-dom";
 
 const Cart: React.FC = () => {
-  
-  
   const { cartItems, removeItem, sum, checkout } = useContext(
     ProductContext
   ) as contextTypes;
-
 
   if (cartItems.length === 0) {
     return (
@@ -24,9 +20,8 @@ const Cart: React.FC = () => {
 
   return (
     <>
-      
       {cartItems.map((cart) => (
-        <div className="cartItems" key={cart.id} >
+        <div className="cartItems" key={cart.id}>
           <img className="img" src={cart.image} alt="CartItem" />
           {/* <p>quantity = {cart.quantity}</p> */}
           <p className="card-title pt-3">{cart.name}</p>
@@ -42,7 +37,7 @@ const Cart: React.FC = () => {
         <hr />
         <div className="d-flex justify-content-between">
           <p className="text-right pt-2">Total: ${sum}</p>
-          <button className="btn btn-primary btn-sm" onClick = {checkout} >
+          <button className="btn btn-primary btn-sm" onClick={checkout}>
             {" "}
             Checkout
           </button>
