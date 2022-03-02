@@ -36,10 +36,10 @@ export interface cartTypes {
     price:number;
 }
 
-export interface  {
+// export interface  {
     
 
-}
+// }
 
 
 // export interface proor {
