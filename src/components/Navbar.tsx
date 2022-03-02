@@ -9,15 +9,17 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="navbar container-fluid">
-      <h1 style={{ color: "white" }}>Shoe Store</h1>
+      <Link to="/" className="nav-link">
+        <h1 style={{ color: "white" }}>Shoe Store</h1>
+      </Link>
       <ul className="nav nav-pills nav-fill">
         <Link to="/" className="nav-link">
-          <FaHome className="fa-5x" color = 'white' />
+          <FaHome className="fa-5x" color="white" />
         </Link>
         <Link to="/cart" className="nav-link">
-          <FaShoppingCart className="fa-5x position-relative" color = 'white' />
+          <FaShoppingCart className="fa-5x position-relative" color="white" />
           <span className="position-absolute top-10 start-90 translate-middle badge rounded-pill bg-danger">
-            {cartItems.length}  
+            {cartItems.length}
           </span>
         </Link>
       </ul>

@@ -18,7 +18,6 @@ const ShopItems: React.FC<itemProps> = ({ items }) => {
         />
         <div className="card-body">
           <h5 className="card-title">{items.name}</h5>
-          <p className="card-text">{items.description}</p>
           <p className="itemsPrice">${items.price}</p>
           <button className="btn btn-primary" onClick={() => addToCart(items)}>
             Add To Cart
