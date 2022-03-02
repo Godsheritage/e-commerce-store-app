@@ -36,7 +36,7 @@ export interface cartTypes {
     price:number;
 }
 
-export interface sumType {
+export interface  {
     
 
 }
