@@ -8,8 +8,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SingleProduct from "./components/SingleProduct";
 const App: React.FC = () => {
   return (
-    <ContextProvider>
-      <Router>
+    <Router>
+      <ContextProvider>
         <div className="container">
           <div className="sub-container">
             <Routes>
@@ -34,7 +34,7 @@ const App: React.FC = () => {
                 }
               />
               <Route
-                path='/SingleProduct"'
+                path='/SingleProduct'
                 element={
                   <>
                     <Navbar />
@@ -46,8 +46,8 @@ const App: React.FC = () => {
             </Routes>
           </div>
         </div>
-      </Router>
-    </ContextProvider>
+      </ContextProvider>
+    </Router>
   );
 };
 
