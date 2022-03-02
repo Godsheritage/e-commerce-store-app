@@ -6,9 +6,14 @@ import {
   singleProdType,
 } from "../shared/types";
 import { useNavigate } from "react-router-dom";
+
 const ProductContext = createContext<contextTypes | null>(null);
 
+
 export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
+
+const navigate = useNavigate();
+
   const [products] = useState<productTypes[]>([
     {
       id: 1,
@@ -60,15 +65,13 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
     price: 3,
   });
 
-  const navigate = useNavigate();
-
   const prodNavigate = (items: productTypes) => {
     setSingleProd({
       image: items.image,
       description: items.description,
       price: items.price,
     });
-    navigate("/SingleProduct");
+    navigate('/SingleProduct');
   };
 
   const [cartItems, setCartItems] = useState<cartTypes[]>([]);

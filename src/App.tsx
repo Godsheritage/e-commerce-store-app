@@ -34,7 +34,7 @@ const App: React.FC = () => {
                 }
               />
               <Route
-                path="/SingleProduct"
+                path='/SingleProduct"'
                 element={
                   <>
                     <Navbar />
