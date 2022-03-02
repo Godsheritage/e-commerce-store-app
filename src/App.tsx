@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Cart from "./pages/Cart";
 import { ContextProvider } from "./context/ProductContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import SingleProduct from "./components/SingleProduct";
 const App: React.FC = () => {
   return (
     <ContextProvider>
@@ -29,6 +29,16 @@ const App: React.FC = () => {
                   <>
                     <Navbar />
                     <Cart />
+                    <Footer />
+                  </>
+                }
+              />
+              <Route
+                path="/SingleProduct"
+                element={
+                  <>
+                    <Navbar />
+                    <SingleProduct />
                     <Footer />
                   </>
                 }
