@@ -14,6 +14,7 @@ export interface itemProps {
         description: string;
         price: number;
     };
+    prodNavigate : (items:productTypes) => void
 }
 
 export interface contextTypes {

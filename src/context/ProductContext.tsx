@@ -50,6 +50,9 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   // setProducts([products]) as productTypes
 
+  // const [singleItem, setSingleItem] = useState(items)
+
+
   const [cartItems, setCartItems] = useState<cartTypes[]>([]);
 
   const addToCart = (items: productTypes) => {
