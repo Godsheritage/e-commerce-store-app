@@ -78,7 +78,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
       description: items.description,
       price: items.price,
     });
-    navigate("/SingleProduct");
+    navigate(`/Products/${items.name}`);
   };
 
   const [cartItems, setCartItems] = useState<cartTypes[]>([]);
