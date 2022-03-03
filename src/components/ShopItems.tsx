@@ -8,7 +8,7 @@ const ShopItems: React.FC<itemProps> = ({ items }) => {
   ) as contextTypes;
 
   return (
-    <div className="col-md-3 col-sm-6">
+    <div className="col-md-3 col-6">
       <div className="card p-1">
         <img
           src={items.image}
