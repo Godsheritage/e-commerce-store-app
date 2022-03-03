@@ -6,6 +6,7 @@ import Cart from "./pages/Cart";
 import { ContextProvider } from "./context/ProductContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SingleProduct from "./components/SingleProduct";
+import Main from "./components/Main";
 const App: React.FC = () => {
   return (
     <Router>
@@ -18,6 +19,7 @@ const App: React.FC = () => {
                 element={
                   <>
                     <Navbar />
+                    <Main />
                     <ShopList />
                     <Footer />
                   </>
@@ -34,7 +36,7 @@ const App: React.FC = () => {
                 }
               />
               <Route
-                path='/Products/*'
+                path="/Products/*"
                 element={
                   <>
                     <Navbar />
