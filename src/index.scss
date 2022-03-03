@@ -59,12 +59,12 @@ $bgColor: #2d3261;
   // background-color: rgb(250, 243, 243);
 }
 
-@media (max-width: 400px) {
-  .cartItems {
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr;
-  }
-}
+// @media (max-width: 400px) {
+//   .cartItems {
+//     grid-template-rows: 1fr;
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
 
 .sub-container {
   display: flex;
