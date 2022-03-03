@@ -11,7 +11,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ContextProvider>
-        <div className="container">
+        <div className="container-fluid">
           <div className="sub-container">
             <Routes>
               <Route

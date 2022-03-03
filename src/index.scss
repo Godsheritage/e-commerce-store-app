@@ -28,6 +28,7 @@ $bgColor: #2d3261;
       color: #fff;
       text-align: center;
     }
+   
   }
 }
 
@@ -75,18 +76,9 @@ $bgColor: #2d3261;
 .navbar {
   background-color: $bgColor;
   padding: 1rem;
+  width: 100% !important;
 }
-.faTimes {
-  // margin-top:1.5rem;
-}
-// .card {
-//   background-color: #fff;
-//   color: #333;
-//   border-radius: 15px;
-//   padding: 40px 50px;
-//   margin: 20px 0;
-//   position: relative;
-// }
+
 
 .link {
   text-decoration: none;
