@@ -19,10 +19,12 @@
     "react-scripts": "5.0.0",
     "typescript": "^4.5.5",
     "uuid": "^8.3.2",
+    "uuidv4": "^6.2.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
+    "work": "nodemon server.js",
     "dev": "concurrently \"start react-scripts start\" \"dev nodemon server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
