@@ -14,7 +14,7 @@ import axios from "axios";
 const ProductContext = createContext<contextTypes | null>(null);
 
 export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
-  
+
   const navigate = useNavigate();
   
   const [products, setProducts] = useState<productTypes[]>([]);
@@ -31,7 +31,6 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
 
 
-  // useEffect( () => {setProducts([])}, [products])
 
   // setProducts([products]) as productTypes
 
