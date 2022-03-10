@@ -1,5 +1,4 @@
 const express = require('express');
-// const uuid = require('uuid/v4');
 const uuid = require('uuid');
 
 
@@ -90,7 +89,10 @@ const productData = [
   ];
 
 app.get('/productData', (req, res) => {
-    res.status(200).send(productData);
+    res.header("Access-Control-Allow-Origin", "*")
+    res.send(productData);
 })
 
-app.listen(5000);
+app.listen(5000, () => {
+  console.log('server is listening on port 5000...')
+});

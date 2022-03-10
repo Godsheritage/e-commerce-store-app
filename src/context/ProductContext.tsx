@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import {
   productTypes,
   contextTypes,
@@ -6,15 +6,30 @@ import {
   singleProdType,
 } from "../shared/types";
 import { useNavigate } from "react-router-dom";
-import productData from "../data/productData";
+// import productData from "../data/productData";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
+// import productData from "../data/productData";
 
 const ProductContext = createContext<contextTypes | null>(null);
 
 export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
+  
   const navigate = useNavigate();
+  
+  const [products, setProducts] = useState<productTypes[]>([]);
 
-  const [products] = useState<productTypes[]>(productData);
+  useEffect( () => {
+    fetchData()
+  }, []);
+  
+  const fetchData = async () => {
+    const response = await axios.get("http://localhost:5000/productData");
+    setProducts(response.data);
+  };
+  
+
+
 
   // useEffect( () => {setProducts([])}, [products])
 
