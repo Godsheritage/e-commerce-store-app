@@ -1,13 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductContext from "../context/ProductContext";
-import { contextTypes } from "../shared/types";
+import { contextTypes, cartTypes } from "../shared/types";
 import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 const Cart: React.FC = () => {
-  const { cartItems, removeItem, sum, checkout } = useContext(
+  const { removeItem, sum, checkout } = useContext(
     ProductContext
-  ) as contextTypes;
+  ) as contextTypes
+
+  const [cartItems, setCartItems] = useState<cartTypes[]>([])
+
+const fetchCartItems = async () => {
+  const response = await axios.get('http://localhost:5000/cartItems')
+  setCartItems(response.data)
+
+}
+
+useEffect(() => {
+  fetchCartItems()
+})
+
 
   if (cartItems.length === 0) {
     return (

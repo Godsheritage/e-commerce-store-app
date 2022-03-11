@@ -19,6 +19,8 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   
   const [products, setProducts] = useState<productTypes[]>([]);
 
+//to fetch the data from thr backend
+
   useEffect( () => {
     fetchData()
   }, []);
@@ -57,7 +59,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   const [cartItems, setCartItems] = useState<cartTypes[]>([]);
 
-  const addToCart = (items: productTypes) => {
+  const addToCart = async (items: productTypes) => {
     const updCart: cartTypes = {
       id: uuidv4(),
       name: items.name,
@@ -65,8 +67,19 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
       price: items.price,
     };
 
+    await axios.post('http://localhost:5000/cartItems', updCart)
+
     setCartItems([updCart, ...cartItems]);
+    // useEffect(() => {
+    //   fetchCart()
+    // }, [])
+    // const response:cartTypes[] = await axios.get('http://localhost:5000/cartItems')
+    // setCartItems(response);
   };
+
+  // const fetchCart = async () => {
+  // }
+
 
   const sum = cartItems.reduce((total, curVal) => {
     return total + curVal.price!;

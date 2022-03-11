@@ -32,7 +32,7 @@ export interface contextTypes {
     removeItem: (id:string) => void
     sum:number;
     checkout:() => void;
-    singleProd:singleProdType
+    singleProd:singleProdType 
     prodNavigate: (items:productTypes) => void;
     
 }
