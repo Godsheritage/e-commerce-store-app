@@ -1,28 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext} from "react";
 import ProductContext from "../context/ProductContext";
-import { contextTypes, cartTypes } from "../shared/types";
+import { contextTypes } from "../shared/types";
 import { FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import axios from "axios";
-
 
 const Cart: React.FC = () => {
-  const { removeItem, sum, checkout } = useContext(
+
+  // importing items from useContext API
+  const { removeItem, sum, checkout, cartItems } = useContext(
     ProductContext
-  ) as contextTypes
-
-  const [cartItems, setCartItems] = useState<cartTypes[]>([])
-
-const fetchCartItems = async () => {
-  const response = await axios.get('http://localhost:5000/cartItems')
-  setCartItems(response.data)
-
-}
-
-useEffect(() => {
-  fetchCartItems()
-})
-
+  ) as contextTypes;
 
   if (cartItems.length === 0) {
     return (
@@ -44,7 +31,7 @@ useEffect(() => {
             className="faTimes"
             color="#2d3261"
             onClick={() => removeItem(cart.id)}
-          />
+            />
         </div>
       ))}
       <div>

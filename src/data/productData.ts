@@ -54,8 +54,7 @@ const productData = [
   {
     id: uuidv4(),
     name: "Salomon Sneakers",
-    image:
-      "https://classic.cdn.media.amplience.net/i/hibbett/4P616_1000_right",
+    image: "https://classic.cdn.media.amplience.net/i/hibbett/4P616_1000_right",
     description:
       "With the debut of the XT-6—a trail-ready shoe with sleek underpinnings and a sturdy silhouette—Salomon struck sneaker gold. Now its next hit is here. Earlier this month the French brand re-released the ACS Pro Advance, a style first introduced in the early aughts that's poised to dominate timelines until Salomon chefs up another smash. It's got loads of the kind of outdoors-y specs you'd expect from a brand with Salomon's pedigree, but even sans the technical details it's a stunner. (The icy silver colorway helps.) Its hulking, angular shape brings to mind Nike's criminally slept-on Vomero 5—but even boxier—while sleek metal eyelets and criss-crossing speed laces don't let you forget its performance bona fides.",
 

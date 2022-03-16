@@ -1,3 +1,6 @@
+import { AxiosResponse } from "axios";
+import React from "react";
+
 export interface productTypes {
   id: string;
   name: string;
@@ -32,8 +35,10 @@ export interface contextTypes {
     removeItem: (id:string) => void
     sum:number;
     checkout:() => void;
-    singleProd:singleProdType 
-    prodNavigate: (items:productTypes) => void;
+    singleProd:any;
+    fetchSingleProduct: (id:string) => void;
+    fetchCartItems: () => void;
+    isClicked:boolean;
     
 }
 

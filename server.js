@@ -88,6 +88,7 @@ const productData = [
 ];
 
 const cartItems = [];
+// const singleProduct = [];
 
 app.use((req, res, next) => {
   res.append("Access-Control-Allow-Origin", ["*"]);
@@ -98,25 +99,59 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+// to fetch the list of products
+
 app.get("/productData", (req, res) => {
-  res.send(productData);
+  res.status(200).send(productData);
 });
+
+//to fetch each individual products
+app.get("/productData/:id", (req, res) => {
+  const singleItem = productData.find((item) => item.id === req.params.id);
+  res.status(200).json({
+    message: singleItem,
+  });
+});
+
+// to fetch the items in the cart
 
 app.get("/cartItems", (req, res) => {
   res.status(200).send(cartItems);
 });
 
+app.use(express.json());
+
+// to delete cart items from the database
+
 app.delete("/cartItems/:id", (req, res) => {
-  // res.status(200).send(cartItems);
-  console.log(req.body.id)
+  const found = cartItems.findIndex((item) => item.id === req.params.id);
+
+  if (found < 0) {
+    return res.status(400).json({
+      message: "item not found",
+    });
+  }
+
+  cartItems.splice(found, 1);
+
+  res.status(200).json({
+    msg: `you have deleted the item with id: ${req.params.id}`,
+    items: cartItems.filter((items) => items.id !== req.params.id),
+  });
 });
+
+// to add cart items to the database
 
 app.post("/cartItems", (req, res) => {
-  const Cart = req.body;
-  cartItems.push(Cart);
-
-  res.send(`you have added ${Cart} to cart`);
+  cartItems.push(req.body);
+  res.status(201).json({
+    youAdded: req.body,
+  });
 });
+
+
+
+// to listen at port 5000
 
 app.listen(PORT, () => {
   console.log("server is listening on port 5000...");

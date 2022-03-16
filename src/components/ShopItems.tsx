@@ -3,7 +3,7 @@ import { itemProps, contextTypes } from "../shared/types";
 import ProductContext from "../context/ProductContext";
 
 const ShopItems: React.FC<itemProps> = ({ items }) => {
-  const { addToCart, prodNavigate } = useContext(
+  const { addToCart, fetchSingleProduct } = useContext(
     ProductContext
   ) as contextTypes;
 
@@ -14,7 +14,7 @@ const ShopItems: React.FC<itemProps> = ({ items }) => {
           src={items.image}
           className="card-img-top"
           alt="products"
-          onClick={() => prodNavigate(items)}
+          onClick={() => fetchSingleProduct(items.id)}
         />
         <div className="card-body">
           <h5 className="card-title">{items.name}</h5>
