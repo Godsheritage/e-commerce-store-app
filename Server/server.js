@@ -1,3 +1,9 @@
+// todo add and initialize typescript to backend server
+// todo implement the mvc pattern 
+// todo set up the application after best practices
+// todo seperate server codde and express middleware
+// todo hostserver the front end with the server 
+
 const express = require("express");
 const uuid = require("uuid");
 
