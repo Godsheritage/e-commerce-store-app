@@ -11,8 +11,6 @@ const httpGetAllProducts = (req, res) => {
 exports.httpGetAllProducts = httpGetAllProducts;
 const httpGetSingleProduct = (req, res) => {
     const singleItem = productData_models_1.default.find((item) => item.id === req.params.id);
-    return res.status(200).json({
-        message: singleItem,
-    });
+    return res.status(200).json(singleItem);
 };
 exports.httpGetSingleProduct = httpGetSingleProduct;

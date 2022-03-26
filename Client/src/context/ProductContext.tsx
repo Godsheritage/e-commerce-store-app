@@ -13,11 +13,8 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  // const [isImageClicked, setisImageClicked] = useState<boolean>(false);
-
   //to fetch the data from the backend API
 
-  
   const fetchData = async () => {
     const response = await axios.get("http://localhost:5000/productData");
     setProducts(response.data);
@@ -30,13 +27,10 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [singleProd, setSingleProd] = useState<any>();
 
   const fetchSingleProduct = async (id: string) => {
-    //  const fetchSingleItem = async () => {
     const response = await axios.get(`http://localhost:5000/productData/${id}`);
-    setSingleProd(response.data.message);
+    setSingleProd(response.data);
 
-    navigate(`/Products/${response.data.message.name}`);
-
-    // setisImageClicked(!isImageClicked);
+    navigate(`/Products/${response.data.name}`);
   };
 
   //state that contains the cart Items
@@ -88,8 +82,11 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   const removeItem = async (id: string) => {
     if (window.confirm("Are you sure you want to remove item from cart")) {
-     const response = await axios.delete(`http://localhost:5000/cartItems/${id}`);
-     setCartItems(response.data.items)
+      const response = await axios.delete(
+        `http://localhost:5000/cartItems/${id}`
+      );
+      const remainingItems = response.data;
+      setCartItems(remainingItems);
     }
   };
 

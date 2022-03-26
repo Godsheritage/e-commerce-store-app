@@ -7,7 +7,5 @@ export const httpGetAllProducts: RequestHandler = (req, res) => {
 
 export const httpGetSingleProduct: RequestHandler = (req, res) => {
   const singleItem = productData.find((item) => item.id === req.params.id);
-  return res.status(200).json({
-    message: singleItem,
-  });
+  return res.status(200).json(singleItem);
 };
