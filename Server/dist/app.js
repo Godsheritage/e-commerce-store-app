@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
 const express_1 = __importDefault(require("express"));
-const productData_models_1 = __importDefault(require("./models/productData.models"));
+const products_routes_1 = __importDefault(require("./routes/Product Routes/products.routes"));
 exports.app = (0, express_1.default)();
 const cartItems = [];
 // const singleProduct = [];
@@ -17,16 +17,17 @@ exports.app.use((req, res, next) => {
 });
 exports.app.use(express_1.default.json());
 // to fetch the list of products
-exports.app.get("/productData", (req, res) => {
-    res.status(200).send(productData_models_1.default);
-});
-//to fetch each individual products
-exports.app.get("/productData/:id", (req, res) => {
-    const singleItem = productData_models_1.default.find((item) => item.id === req.params.id);
-    res.status(200).json({
-        message: singleItem,
-    });
-});
+exports.app.use('/productData', products_routes_1.default);
+// app.get("/productData", (req, res) => {
+//   res.status(200).send(productData);
+// });
+// //to fetch each individual products
+// app.get("/productData/:id", (req, res) => {
+//   const singleItem = productData.find((item) => item.id === req.params.id);
+//   res.status(200).json({
+//     message: singleItem,
+//   });
+// });
 // to fetch the items in the cart
 exports.app.get("/cartItems", (req, res) => {
     res.status(200).send(cartItems);

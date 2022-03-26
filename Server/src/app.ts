@@ -1,5 +1,6 @@
 import express from "express";
 import productData from "./models/productData.models";
+import productDataRoutes from "./routes/Product Routes/products.routes";
 
 export const app = express();
 
@@ -17,17 +18,19 @@ app.use(express.json());
 
 // to fetch the list of products
 
-app.get("/productData", (req, res) => {
-  res.status(200).send(productData);
-});
+app.use('/productData', productDataRoutes)
 
-//to fetch each individual products
-app.get("/productData/:id", (req, res) => {
-  const singleItem = productData.find((item) => item.id === req.params.id);
-  res.status(200).json({
-    message: singleItem,
-  });
-});
+// app.get("/productData", (req, res) => {
+//   res.status(200).send(productData);
+// });
+
+// //to fetch each individual products
+// app.get("/productData/:id", (req, res) => {
+//   const singleItem = productData.find((item) => item.id === req.params.id);
+//   res.status(200).json({
+//     message: singleItem,
+//   });
+// });
 
 // to fetch the items in the cart
 
