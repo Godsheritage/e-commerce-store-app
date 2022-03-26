@@ -1,23 +1,17 @@
-import express from 'express'
-import productData from './models/productData.models';
-
-
+import express from "express";
+import productData from "./models/productData.models";
 
 export const app = express();
 
-
-
-
-const cartItems:any = [];
+const cartItems: any = [];
 // const singleProduct = [];
 
 app.use((req, res, next) => {
-  res.append('Access-Control-Allow-Origin', ['*'])
-  res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-  res.append('Access-Control-Allow-Headers', 'Content-Type')
-  next()
+  res.append("Access-Control-Allow-Origin", ["*"]);
+  res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.append("Access-Control-Allow-Headers", "Content-Type");
+  next();
 });
-
 
 app.use(express.json());
 
@@ -41,7 +35,6 @@ app.get("/cartItems", (req, res) => {
   res.status(200).send(cartItems);
 });
 
-
 // to delete cart items from the database
 
 app.delete("/cartItems/:id", (req, res) => {
@@ -57,7 +50,7 @@ app.delete("/cartItems/:id", (req, res) => {
 
   res.status(200).json({
     msg: `you have deleted the item with id: ${req.params.id}`,
-    items: cartItems.filter((items:any) => items.id !== req.params.id),
+    items: cartItems.filter((items: any) => items.id !== req.params.id),
   });
 });
 
@@ -69,5 +62,3 @@ app.post("/cartItems", (req, res) => {
     youAdded: req.body,
   });
 });
-
-
