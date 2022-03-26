@@ -1,5 +1,3 @@
-import { AxiosResponse } from "axios";
-import React from "react";
 
 export interface productTypes {
   id: string;
