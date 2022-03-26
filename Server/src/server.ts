@@ -5,7 +5,7 @@
 // todo hostserver the front end with the server 
 
 import express from 'express'
-import uuid from 'uuid'
+import {v4 as uuidv4} from 'uuid'
 
 
 
@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 5000;
 
 const productData = [
   {
-    id: uuid.v4(),
+    id: uuidv4(),
     name: "Nike-Air Force",
     image:
       "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e777c881-5b62-4250-92a6-362967f54cca/air-force-1-07-womens-shoes-GCkPzr.png",
@@ -28,7 +28,7 @@ const productData = [
     price: 300,
   },
   {
-    id: uuid.v4(),
+    id: uuidv4(),
     name: "Adidas Yeezy",
     image:
       "https://cdn.shopify.com/s/files/1/0255/9429/8467/products/adidas-yeezy-500-taupe-light-GX3605_1_kxawvg_1800x1800.jpg?v=1623052526",
@@ -38,7 +38,7 @@ const productData = [
     price: 540,
   },
   {
-    id: uuid.v4(),
+    id: uuidv4(),
     name: "YEEZY Foam Runner",
     image:
       "https://www.ufs-federation.com/images/h/adidas%20yeezy%20foam%20runner-633kra.jpg",
@@ -48,7 +48,7 @@ const productData = [
     price: 1000,
   },
   {
-    id: uuid.v4(),
+    id: uuidv4(),
     name: "Nike Air Jordan",
     image:
       "https://myalpins.com/1293-thickbox_default/men-nike-air-jordan-1-mid-light-smoke-grey.jpg",
@@ -58,7 +58,7 @@ const productData = [
     price: 600,
   },
   {
-    id: uuid.v4(),
+    id: uuidv4(),
     name: "Jordan Retro 1",
     image:
       "https://cdn.shopify.com/s/files/1/0255/9429/8467/products/air-jordan-3-retro-a-ma-maniere-wmns-raised-by-women-dh3434-110_1_nygxvk_1800x1800.jpg?v=1627999359",
@@ -68,7 +68,7 @@ const productData = [
     price: 900,
   },
   {
-    id: uuid.v4(),
+    id: uuidv4(),
     name: "Salomon Sneakers",
     image: "https://classic.cdn.media.amplience.net/i/hibbett/4P616_1000_right",
     description:
@@ -77,7 +77,7 @@ const productData = [
     price: 660,
   },
   {
-    id: uuid.v4(),
+    id: uuidv4(),
     name: "NB 990v4",
     image:
       "https://nb.scene7.com/is/image/NB/m990jj4_nb_02_i?$dw_detail_main_lg$&bgc=f1f1f1&layer=1&bgcolor=f1f1f1&blendMode=mult&scale=10&wid=1600&hei=1600",
@@ -87,7 +87,7 @@ const productData = [
     price: 1400,
   },
   {
-    id: uuid.v4(),
+    id: uuidv4(),
     name: "Nike One sneaker",
     image:
       "https://i5.walmartimages.com/asr/3033677c-584a-4fb7-b549-32e1969d0a7a_1.475695c6981676cc18e5886644b80d49.jpeg",
