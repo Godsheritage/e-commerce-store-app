@@ -4,8 +4,13 @@
 // todo seperate server codde and express middleware
 // todo hostserver the front end with the server 
 
-const express = require("express");
-const uuid = require("uuid");
+import express from 'express'
+import uuid from 'uuid'
+
+
+
+// const express = require("express");
+// const uuid = require("uuid");
 
 const app = express();
 
@@ -93,7 +98,7 @@ const productData = [
   },
 ];
 
-const cartItems = [];
+const cartItems:any = [];
 // const singleProduct = [];
 
 app.use((req, res, next) => {
@@ -131,7 +136,7 @@ app.use(express.json());
 // to delete cart items from the database
 
 app.delete("/cartItems/:id", (req, res) => {
-  const found = cartItems.findIndex((item) => item.id === req.params.id);
+  const found = cartItems.findIndex((item: any) => item.id === req.params.id);
 
   if (found < 0) {
     return res.status(400).json({
@@ -143,7 +148,7 @@ app.delete("/cartItems/:id", (req, res) => {
 
   res.status(200).json({
     msg: `you have deleted the item with id: ${req.params.id}`,
-    items: cartItems.filter((items) => items.id !== req.params.id),
+    items: cartItems.filter((items:any) => items.id !== req.params.id),
   });
 });
 
