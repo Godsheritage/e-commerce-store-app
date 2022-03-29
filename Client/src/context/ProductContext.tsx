@@ -13,19 +13,23 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  //to fetch the data from the backend API
-
-  const fetchData = async () => {
-    const response = await axios.get("http://localhost:5000/productData");
-    setProducts(response.data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const [singleProd, setSingleProd] = useState<any>();
 
+  const [cartItems, setCartItems] = useState<cartTypes[]>([]);
+
+  //to fetch the data from the backend API
+  
+  const fetchProducts = async () => {
+    const response = await axios.get("http://localhost:5000/productData");
+    const data = response.data;
+    setProducts(data);
+  };
+
+  
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+  
   const fetchSingleProduct = async (id: string) => {
     const response = await axios.get(`http://localhost:5000/productData/${id}`);
     setSingleProd(response.data);
@@ -33,9 +37,6 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
     navigate(`/Products/${response.data.name}`);
   };
 
-  //state that contains the cart Items
-
-  const [cartItems, setCartItems] = useState<cartTypes[]>([]);
 
   // Add items to the cart
 

@@ -8,8 +8,8 @@ const ShopList: React.FC = () => {
   const { products } = useContext(ProductContext) as contextTypes;
 
   return (
-    <div className="row g-5">
-      {products.map((item) => (
+    <div className = 'row g-5'>
+      {products.map( item => (
         <ShopItems key={item.id} items={item} />
       ))}
     </div>

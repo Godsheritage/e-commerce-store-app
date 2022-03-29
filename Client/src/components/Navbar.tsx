@@ -7,14 +7,6 @@ import { FaShoppingCart, FaHome } from "react-icons/fa";
 const Navbar: React.FC = () => {
   const { cartItems } = useContext(ProductContext) as contextTypes;
 
-  // const fetchCartItems = async () => {
-  //   const response = await axios.get('http://localhost:5000/cartItems')
-  //   setCartItems(response.data)
-  
-  // }
-
-  // useEffect()
-
   return (
     <nav className="navbar container-fluid">
       <Link to="/" className="nav-link">
