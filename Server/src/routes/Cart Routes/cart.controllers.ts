@@ -1,6 +1,12 @@
 import { RequestHandler } from "express";
 import { cartItems } from "../../models/cart.models";
 
+export const httpAddItemsToCart: RequestHandler = (req, res) => {
+  const newItem = req.body;
+  cartItems.push(newItem);
+  return res.status(201).json(newItem);
+};
+
 export const httpgetCartItems: RequestHandler = (req, res) => {
   return res.status(200).send(cartItems);
 };
@@ -21,9 +27,3 @@ export const httpDeleteCartItem: RequestHandler = (req, res) => {
 
 
 
-export const httpAddItemsToCart: RequestHandler = (req, res) => {
-  const newItem = req.body;
-
-  cartItems.push(newItem);
-  return res.status(201).json(newItem);
-};

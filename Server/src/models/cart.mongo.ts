@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-//TODO create a product data schema adn a model
 
 const cartSchema = new mongoose.Schema({
     id :  {type : String, required : true},
@@ -12,3 +11,7 @@ const cartSchema = new mongoose.Schema({
 const cartItemsDatabse = mongoose.model('cartItem', cartSchema)
 
 export default cartItemsDatabse
+
+
+//Todo setup the databse
+//Todo set up database crud functiions
