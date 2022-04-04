@@ -1,7 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.httpAddItemsToCart = exports.httpDeleteCartItem = exports.httpgetCartItems = void 0;
+exports.httpDeleteCartItem = exports.httpgetCartItems = exports.httpAddItemsToCart = void 0;
 const cart_models_1 = require("../../models/cart.models");
+const httpAddItemsToCart = (req, res) => {
+    const newItem = req.body;
+    cart_models_1.cartItems.push(newItem);
+    return res.status(201).json(newItem);
+};
+exports.httpAddItemsToCart = httpAddItemsToCart;
 const httpgetCartItems = (req, res) => {
     return res.status(200).send(cart_models_1.cartItems);
 };
@@ -18,9 +24,3 @@ const httpDeleteCartItem = (req, res) => {
     return res.status(200).json(items);
 };
 exports.httpDeleteCartItem = httpDeleteCartItem;
-const httpAddItemsToCart = (req, res) => {
-    const newItem = req.body;
-    cart_models_1.cartItems.push(newItem);
-    return res.status(201).json(newItem);
-};
-exports.httpAddItemsToCart = httpAddItemsToCart;

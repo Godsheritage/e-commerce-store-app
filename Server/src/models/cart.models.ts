@@ -3,7 +3,7 @@ import cartItemsDatabse from "./cart.mongo";
 const addItemToCart = async (newItem: any) => {
   cartItemsDatabse.updateOne(
     {
-      _id: newItem._id,
+      id: newItem.id,
     },
     newItem,
     { upsert: true }
