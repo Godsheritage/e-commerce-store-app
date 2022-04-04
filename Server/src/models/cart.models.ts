@@ -1,21 +1,17 @@
-import cartItemsDatabse from "./cart.mongo"
+import cartItemsDatabse from "./cart.mongo";
 
-
-
-const addItemToCart = async () => {}
-
-
+const addItemToCart = async (newItem: any) => {
+  cartItemsDatabse.updateOne(
+    {
+      _id: newItem._id,
+    },
+    newItem,
+    { upsert: true }
+  );
+};
 
 export const fetchCart = async () => {
-   return await cartItemsDatabse.find({}, { "__v" : 0, "_id" : 0})
-}
+  return await cartItemsDatabse.find({}, { __v: 0 });
+};
 
-
-
-
-
-
-export const cartItems : any = []
-
-
-
+export const cartItems: any = [];
