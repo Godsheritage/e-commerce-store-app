@@ -93,20 +93,16 @@ const productData: productTypes[] = [
 
 const sendProductToMongo = async () => {
   try {
-    await productDataDatabse.updateMany();
+    await productDataDatabse.create(productData);
   } catch (err) {
     console.log(err);
   }
 };
 sendProductToMongo();
 
-const fetchProductsFromMongo = async () => {
-  try {
-    await productDataDatabse.find({}, {_v : 0});
-  } catch (err) {
-    console.log(err);
-  }
-}
+export const fetchProductsFromMongo = async () => {
+  return await productDataDatabse.find({}, { _v: 0 });
+};
 
 //TODO send all the items to the database
 

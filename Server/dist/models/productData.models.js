@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.fetchProductsFromMongo = void 0;
 const uuid_1 = require("uuid");
 const productData_mongo_1 = __importDefault(require("./productData.mongo"));
 const productData = [
@@ -72,5 +73,9 @@ const sendProductToMongo = async () => {
     }
 };
 sendProductToMongo();
+const fetchProductsFromMongo = async () => {
+    return await productData_mongo_1.default.find({}, { _v: 0 });
+};
+exports.fetchProductsFromMongo = fetchProductsFromMongo;
 //TODO send all the items to the database
 exports.default = productData;

@@ -1,8 +1,8 @@
 import { RequestHandler } from "express";
-import productData from "../../models/productData.models";
+import productData, { fetchProductsFromMongo } from "../../models/productData.models";
 
-export const httpGetAllProducts: RequestHandler = (req, res) => {
-  res.status(200).send(productData);
+export const httpGetAllProducts: RequestHandler = async (req, res) => {
+  res.status(200).json( await fetchProductsFromMongo());
 };
 
 export const httpGetSingleProduct: RequestHandler = (req, res) => {
