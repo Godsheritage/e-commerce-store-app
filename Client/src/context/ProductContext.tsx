@@ -64,18 +64,13 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
     return total + curVal.price!;
   }, 0);
 
-  // useEffect(() => {
-  //   sum();
-  // }, [cartItems]);
-
-  // to check out all the cart items
+  // to remove all the cart items
   const checkout = async () => {
     if (
       window.confirm(
         ` Your total balance is $${sum} Are you sure you want to checkout?`
       )
     ) {
-      // setCartItems([]);
       const response = await axios.delete("http://localhost:5000/cartItems")
       setCartItems(response.data)
     }

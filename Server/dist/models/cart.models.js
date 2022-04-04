@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cartItems = exports.DeleteAllCartItems = exports.deleteCartItem = exports.fetchCart = exports.addItemToCart = void 0;
 const cart_mongo_1 = __importDefault(require("./cart.mongo"));
+// to add an item to the database
 const addItemToCart = async (newItem) => {
     cart_mongo_1.default.create(newItem);
 };
