@@ -1,29 +1,51 @@
 import { RequestHandler } from "express";
-import { cartItems } from "../../models/cart.models";
+import { cartItems, DeleteAllCartItems } from "../../models/cart.models";
+import {
+  addItemToCart,
+  fetchCart,
+  deleteCartItem,
+} from "../../models/cart.models";
 
-export const httpAddItemsToCart: RequestHandler = (req, res) => {
+
+export const httpAddItemsToCart: RequestHandler = async (req, res) => {
   const newItem = req.body;
-  cartItems.push(newItem);
+  await addItemToCart(newItem);
   return res.status(201).json(newItem);
 };
 
-export const httpgetCartItems: RequestHandler = (req, res) => {
-  return res.status(200).send(cartItems);
+export const httpgetCartItems: RequestHandler = async (req, res) => {
+  return res.status(200).json(await fetchCart());
 };
 
-export const httpDeleteCartItem: RequestHandler = (req, res) => {
-  const found = cartItems.findIndex((item: any) => item.id === req.params.id);
+export const httpDeleteCartItem: RequestHandler = async (req, res) => {
+  const ID = req.params.id;
 
-  if (found < 0) {
+  const deletedItem = await deleteCartItem(ID);
+
+  if (deletedItem.deletedCount === 0) {
     return res.status(404).json({
-      message: "item not found",
+      error : "item not found",
     });
   }
 
-  cartItems.splice(found, 1);
-  const items = cartItems.filter((items: any) => items.id !== req.params.id);
-  return res.status(200).json(items);
+  // const items = cartItems.filter((items: any) => items.id !== req.params.id);
+  
+  return res.status(200).json(await fetchCart());
 };
 
+export const httpDeleteAllCartItems: RequestHandler = async (req, res) => {
+  // const ID = req.params.id;
+
+  const deleted = await DeleteAllCartItems()
 
 
+  if (deleted.deletedCount === 0) {
+    return res.status(404).json({
+      error : "no item was deleted",
+    });
+  }
+
+  // const items = cartItems.filter((items: any) => items.id !== req.params.id);
+  
+  return res.status(200).json(await fetchCart());
+};

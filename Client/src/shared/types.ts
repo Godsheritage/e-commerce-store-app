@@ -31,7 +31,7 @@ export interface contextTypes {
     addToCart: (items:productTypes) => void;
     cartItems: cartTypes[];
     removeItem: (id:string) => void
-    sum:number;
+    sum: any;
     checkout:() => void;
     singleProd:any;
     fetchSingleProduct: (id:string) => void;
