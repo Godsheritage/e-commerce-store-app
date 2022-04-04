@@ -1,6 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const uuid_1 = require("uuid");
+const productData_mongo_1 = __importDefault(require("./productData.mongo"));
 const productData = [
     {
         id: (0, uuid_1.v4)(),
@@ -59,4 +63,14 @@ const productData = [
         price: 700,
     },
 ];
+const sendProductToMongo = async () => {
+    try {
+        await productData_mongo_1.default.create(productData);
+    }
+    catch (err) {
+        console.log(err);
+    }
+};
+sendProductToMongo();
+//TODO send all the items to the database
 exports.default = productData;

@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import productDataDatabse from "./productData.mongo";
 
 interface productTypes {
   id: string;
@@ -8,7 +9,7 @@ interface productTypes {
   price: number;
 }
 
-const productData : productTypes[] = [
+const productData: productTypes[] = [
   {
     id: uuidv4(),
     name: "Nike-Air Force",
@@ -90,4 +91,23 @@ const productData : productTypes[] = [
   },
 ];
 
-export default productData
+const sendProductToMongo = async () => {
+  try {
+    await productDataDatabse.updateMany();
+  } catch (err) {
+    console.log(err);
+  }
+};
+sendProductToMongo();
+
+const fetchProductsFromMongo = async () => {
+  try {
+    await productDataDatabse.find({}, {_v : 0});
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+//TODO send all the items to the database
+
+export default productData;
