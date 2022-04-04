@@ -8,6 +8,7 @@ import productDataRoutes from "./routes/Product Routes/products.routes";
 export const app = express();
 
 app.use(cors());
+
 app.use(morgan("combined"));
 
 app.use(express.json());
