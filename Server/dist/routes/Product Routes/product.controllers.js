@@ -1,36 +1,19 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.httpGetSingleProduct = exports.httpGetAllProducts = void 0;
-const productData_models_1 = __importStar(require("../../models/productData.models"));
+const productData_models_1 = require("../../models/productData.models");
 const httpGetAllProducts = async (req, res) => {
     res.status(200).json(await (0, productData_models_1.fetchProductsFromMongo)());
 };
 exports.httpGetAllProducts = httpGetAllProducts;
-const httpGetSingleProduct = (req, res) => {
-    const singleItem = productData_models_1.default.find((item) => item.id === req.params.id);
+const httpGetSingleProduct = async (req, res) => {
+    const ID = req.params.id;
+    const singleItem = await (0, productData_models_1.fetchSingleProductFromMongo)(ID);
+    if (singleItem === null) {
+        return res.status(404).json({
+            error: `item with id of ${ID} was not found`,
+        });
+    }
     return res.status(200).json(singleItem);
 };
 exports.httpGetSingleProduct = httpGetSingleProduct;

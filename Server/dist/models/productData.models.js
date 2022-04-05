@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fetchProductsFromMongo = void 0;
+exports.fetchSingleProductFromMongo = exports.fetchProductsFromMongo = void 0;
 const uuid_1 = require("uuid");
 const productData_mongo_1 = __importDefault(require("./productData.mongo"));
 const productData = [
@@ -72,10 +72,14 @@ const sendProductToMongo = async () => {
         console.log(err);
     }
 };
-sendProductToMongo();
+// only un-comment if you want to add the oriduct data array to the database
+// sendProductToMongo();
 const fetchProductsFromMongo = async () => {
     return await productData_mongo_1.default.find({}, { _v: 0 });
 };
 exports.fetchProductsFromMongo = fetchProductsFromMongo;
-//TODO send all the items to the database
-exports.default = productData;
+const fetchSingleProductFromMongo = async (ID) => {
+    return await productData_mongo_1.default.findOne({ id: ID }, { '_v': 0 });
+};
+exports.fetchSingleProductFromMongo = fetchSingleProductFromMongo;
+// export default productData;
