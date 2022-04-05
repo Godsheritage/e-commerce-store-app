@@ -91,7 +91,7 @@ const productData: productTypes[] = [
   },
 ];
 
-
+// to send all the product in productData Array to database
 const sendProductToMongo = async () => {
   try {
     await productDataDatabse.create(productData);
@@ -102,11 +102,12 @@ const sendProductToMongo = async () => {
 // only un-comment if you want to add the oriduct data array to the database
 // sendProductToMongo();
 
+// to fetch all products from mongo
 export const fetchProductsFromMongo = async () => {
   return await productDataDatabse.find({}, { _v: 0 });
 };
 
-
+// to fetch a single product from mongo
 export const fetchSingleProductFromMongo = async (ID : string) => {
   return await productDataDatabse.findOne({id : ID}, { '_v' : 0 });
 };

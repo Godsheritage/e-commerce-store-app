@@ -64,6 +64,7 @@ const productData = [
         price: 700,
     },
 ];
+// to send all the product in productData Array to database
 const sendProductToMongo = async () => {
     try {
         await productData_mongo_1.default.create(productData);
@@ -74,10 +75,12 @@ const sendProductToMongo = async () => {
 };
 // only un-comment if you want to add the oriduct data array to the database
 // sendProductToMongo();
+// to fetch all products from mongo
 const fetchProductsFromMongo = async () => {
     return await productData_mongo_1.default.find({}, { _v: 0 });
 };
 exports.fetchProductsFromMongo = fetchProductsFromMongo;
+// to fetch a single product from mongo
 const fetchSingleProductFromMongo = async (ID) => {
     return await productData_mongo_1.default.findOne({ id: ID }, { '_v': 0 });
 };

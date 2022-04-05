@@ -4,10 +4,13 @@ import {
   fetchSingleProductFromMongo,
 } from "../../models/productData.models";
 
+
+// to get all products from the API
 export const httpGetAllProducts: RequestHandler = async (req, res) => {
   res.status(200).json(await fetchProductsFromMongo());
 };
 
+// to get a single product from API
 export const httpGetSingleProduct: RequestHandler = async (req, res) => {
   const ID = req.params.id;
   const singleItem = await fetchSingleProductFromMongo(ID);
