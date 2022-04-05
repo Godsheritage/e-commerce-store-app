@@ -17,11 +17,14 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   const [cartItems, setCartItems] = useState<cartTypes[]>([]);
 
+  const [isLoading, setIsLoading] = useState<Boolean>(true);
+
   //to fetch the data from the backend API
   const fetchProducts = async () => {
     const response = await axios.get("http://localhost:5000/productData");
     const data = response.data;
     setProducts(data);
+    setIsLoading(false)
   };
 
   useEffect(() => {
@@ -91,6 +94,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
     <ProductContext.Provider
       value={{
         products,
+        isLoading,
         addToCart,
         cartItems,
         removeItem,
