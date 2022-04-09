@@ -1,2 +1,2 @@
 # e-commerce-store-app
-This is an E-commerce
+This is an E-commerce web aapplication
