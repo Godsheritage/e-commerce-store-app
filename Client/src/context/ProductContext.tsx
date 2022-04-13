@@ -1,10 +1,11 @@
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 import React, { useState, createContext, useEffect } from "react";
 import { productTypes, contextTypes, cartTypes } from "../shared/types";
-import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
 
 const ProductContext = createContext<contextTypes | null>(null);
+const serverURL = 'https://localhost:5000'
 
 export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   const navigate = useNavigate();

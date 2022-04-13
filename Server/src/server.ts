@@ -1,4 +1,5 @@
 import fs from 'fs'
+import path from 'path';
 import https from "https";
 
 import mongoose from "mongoose";
@@ -11,8 +12,8 @@ const MONGO_URL =
   "mongodb+srv://Ecommerce-api:Heritage4lyf@ecommercecluster.onpdt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 const server = https.createServer({
- key : fs.readFileSync('key.pem'),
- cert : fs.readFileSync('cert.pem')
+ key : fs.readFileSync(path.join(__dirname , '..' , 'key.pem')),
+ cert : fs.readFileSync(path.join(__dirname , '..' , 'cert.pem')),
 }, app);
 
 // to alert us when mongoose has connected to mongo db
