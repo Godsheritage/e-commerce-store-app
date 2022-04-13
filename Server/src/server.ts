@@ -1,4 +1,6 @@
-import http from "http";
+import fs from 'fs'
+import https from "https";
+
 import mongoose from "mongoose";
 
 import { app } from "./app";
@@ -8,7 +10,10 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URL =
   "mongodb+srv://Ecommerce-api:Heritage4lyf@ecommercecluster.onpdt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-const server = http.createServer(app);
+const server = https.createServer({
+ key : fs.readFileSync('key.pem'),
+ cert : fs.readFileSync('cert.pem')
+}, app);
 
 // to alert us when mongoose has connected to mongo db
 mongoose.connection.once("open", () => {
