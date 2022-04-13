@@ -22,7 +22,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   //to fetch all products from the backend API
   const fetchProducts = async () => {
-    const response = await axios.get("http://localhost:5000/productData");
+    const response = await axios.get(`${serverURL}/productData`);
     const data = response.data;
     setProducts(data);
     setIsLoading(false)
@@ -34,7 +34,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   // to fetch a single product from the back end API
   const fetchSingleProduct = async (id: string) => {
-    const response = await axios.get(`http://localhost:5000/productData/${id}`);
+    const response = await axios.get(`${serverURL}/productData/${id}`);
     setSingleProd(response.data);
     navigate(`/Products/${response.data.name}`);
   };
@@ -48,13 +48,13 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
       price: items.price,
     };
 
-    await axios.post("http://localhost:5000/cartItems", updCart);
+    await axios.post(`${serverURL}/cartItems`, updCart);
     setIsClicked(!isClicked);
   };
 
   // to fetch cart Items
   const fetchCartItems = async () => {
-    const response = await axios.get("http://localhost:5000/cartItems");
+    const response = await axios.get(`${serverURL}/cartItems`);
     setCartItems(response.data);
   };
 
@@ -74,7 +74,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
         ` Your total balance is $${sum} Are you sure you want to checkout?`
       )
     ) {
-      const response = await axios.delete("http://localhost:5000/cartItems")
+      const response = await axios.delete(`${serverURL}/cartItems`)
       setCartItems(response.data)
     }
   };
@@ -83,7 +83,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   const removeItem = async (id: string) => {
     if (window.confirm("Are you sure you want to remove item from cart")) {
       const response = await axios.delete(
-        `http://localhost:5000/cartItems/${id}`
+        `${serverURL}/cartItems/${id}`
       );
       const remainingItems = response.data;
       setCartItems(remainingItems);
