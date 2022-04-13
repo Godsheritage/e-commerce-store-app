@@ -19,7 +19,7 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   const [isLoading, setIsLoading] = useState<Boolean>(true);
 
-  //to fetch the data from the backend API
+  //to fetch all products from the backend API
   const fetchProducts = async () => {
     const response = await axios.get("http://localhost:5000/productData");
     const data = response.data;
@@ -31,11 +31,10 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
     fetchProducts();
   }, []);
 
-  // to fretch a single product data
+  // to fetch a single product from the back end API
   const fetchSingleProduct = async (id: string) => {
     const response = await axios.get(`http://localhost:5000/productData/${id}`);
     setSingleProd(response.data);
-
     navigate(`/Products/${response.data.name}`);
   };
 
