@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-"scripts": {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client-install" : "npm install --prefix client",
-    "server-install":"npm install --prefix server",
+    "client-install": "npm install --prefix client",
+    "server-install": "npm install --prefix server",
     "install": "npm run client-install && npm run server install",
-    "deploy":"npm run build --prefix client && npm run server",
+    "deploy": "npm run build --prefix client && npm run server",
     "client": "npm start --prefix client",
     "server": "npm start --prefix server",
     "start": "npm run client & npm run server"
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/Godsheritage/e-commerce-store-app/issues"
   },
-  "homepage": "https://github.com/Godsheritage/e-commerce-store-app#readme"
+  "homepage": "https://github.com/Godsheritage/e-commerce-store-app#readme",
+  "dependencies": {
+    "helmet": "^5.0.2"
+  }
 }

@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const https_1 = __importDefault(require("https"));
-const mongoose_1 = __importDefault(require("mongoose"));
 const app_1 = require("./app");
+const mongoose_1 = __importDefault(require("mongoose"));
 const PORT = process.env.PORT || 5000;
 const MONGO_URL = "mongodb+srv://Ecommerce-api:Heritage4lyf@ecommercecluster.onpdt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const server = https_1.default.createServer({
