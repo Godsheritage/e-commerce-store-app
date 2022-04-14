@@ -18,6 +18,12 @@ const config = {
   CLIENT_SECRET: process.env.CLIENT_SECRET,
 };
 
+const AUTH_OPTIONS = {
+  clientID : config.CLIENT_ID,
+  clientSecret : config.CLIENT_SECRET,
+  callbackURL : '/auth/google/callback' 
+}
+
 const checkLoggedIn: RequestHandler = (req, res, next) => {
   const isLoggedIn = true;
   if (!isLoggedIn) {
@@ -28,18 +34,23 @@ const checkLoggedIn: RequestHandler = (req, res, next) => {
   next();
 };
 
+
+
 app.use(helmet());
 app.use(cors());
+passport.use(new Strategy(AUTH_OPTIONS, ()))
+
 
 app.use(passport.initialize());
+
 
 //for cross origin resoursce sharing
 
 app.use(morgan("combined"));
 
-app.get("auth.google", (req, res) => {});
+app.get("auth/google", (req, res) => {});
 
-app.get("auth.google/callback", (req, res) => {});
+app.get("auth/google/callback", (req, res) => {});
 
 app.use(express.json());
 
