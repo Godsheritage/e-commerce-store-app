@@ -23,6 +23,7 @@ const Navbar: React.FC = () => {
           </span>
         </Link>
       </ul>
+      <a href = 'auth/google'> Login</a>
     </nav>
   );
 };

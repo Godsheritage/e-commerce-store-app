@@ -10,9 +10,9 @@ const helmet_1 = __importDefault(require("helmet"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const morgan_1 = __importDefault(require("morgan"));
 const passport_1 = __importDefault(require("passport"));
-const passport_google_oauth20_1 = require("passport-google-oauth20");
 const express_1 = __importDefault(require("express"));
 const cart_routes_1 = __importDefault(require("./routes/Cart Routes/cart.routes"));
+const passport_google_oauth20_1 = require("passport-google-oauth20");
 const products_routes_1 = __importDefault(require("./routes/Product Routes/products.routes"));
 exports.app = (0, express_1.default)();
 dotenv_1.default.config();
@@ -23,7 +23,7 @@ const config = {
 const AUTH_OPTIONS = {
     clientID: config.CLIENT_ID,
     clientSecret: config.CLIENT_SECRET,
-    callbackURL: '/auth/google/callback'
+    callbackURL: "/auth/google/callback",
 };
 const checkLoggedIn = (req, res, next) => {
     const isLoggedIn = true;
@@ -34,14 +34,42 @@ const checkLoggedIn = (req, res, next) => {
     }
     next();
 };
+const verifyCallback = (accessToken, refreshToken, profile, done) => {
+    console.log(`the user profile is ${profile}`);
+    done(null, profile);
+};
 exports.app.use((0, helmet_1.default)());
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     useDefaults: true,
+//     directives: {
+//       "img-src": ["'self'", "https: data:"]
+//     }
+//   })
+// )
 exports.app.use((0, cors_1.default)());
-passport_1.default.use(new passport_google_oauth20_1.Strategy(AUTH_OPTIONS, ()));
+passport_1.default.use(new passport_google_oauth20_1.Strategy(AUTH_OPTIONS, verifyCallback));
 exports.app.use(passport_1.default.initialize());
 //for cross origin resoursce sharing
 exports.app.use((0, morgan_1.default)("combined"));
-exports.app.get("auth/google", (req, res) => { });
-exports.app.get("auth/google/callback", (req, res) => { });
+exports.app.get("/auth/google", passport_1.default.authenticate("google", {
+    scope: ["email", "profile"],
+}));
+exports.app.get("/auth/google/callback", passport_1.default.authenticate("google", {
+    failureRedirect: "/failure",
+    successRedirect: "/",
+    session: false,
+}));
+// logout function
+exports.app.get("/logout", (req, res) => {
+    req.logOut();
+    return res.status(200).redirect("/");
+});
+exports.app.get("/failure", (req, res) => {
+    res.status(400).json({
+        error: "failed to login",
+    });
+});
 exports.app.use(express_1.default.json());
 exports.app.use("/productData", products_routes_1.default);
 exports.app.use("/cartItems", cart_routes_1.default);
