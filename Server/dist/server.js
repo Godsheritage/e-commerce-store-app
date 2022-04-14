@@ -25,7 +25,7 @@ mongoose_1.default.connection.on("eror", (err) => {
 const startServer = async () => {
     await mongoose_1.default.connect(MONGO_URL);
     server.listen(PORT, () => {
-        console.log(`server is listening at port ${PORT}....`);
+        console.log(`server is listening at port ${PORT}...`);
     });
 };
 startServer();

@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import passport, { Profile } from "passport";
 import express, { RequestHandler } from "express";
+import cookiSession from 'cookie-session'
 import cartRoutes from "./routes/Cart Routes/cart.routes";
 import { Strategy, VerifyCallback } from "passport-google-oauth20";
 import productDataRoutes from "./routes/Product Routes/products.routes";
@@ -46,6 +47,12 @@ const verifyCallback = (
 
 app.use(cors());
 passport.use(new Strategy(AUTH_OPTIONS, verifyCallback));
+
+app.use(cookiSession({
+  name : 'session',
+  maxAge: 24*60*60*1000,
+  keys : 
+}))
 
 app.use(passport.initialize());
 

@@ -10,6 +10,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const morgan_1 = __importDefault(require("morgan"));
 const passport_1 = __importDefault(require("passport"));
 const express_1 = __importDefault(require("express"));
+const cookie_session_1 = __importDefault(require("cookie-session"));
 const cart_routes_1 = __importDefault(require("./routes/Cart Routes/cart.routes"));
 const passport_google_oauth20_1 = require("passport-google-oauth20");
 const products_routes_1 = __importDefault(require("./routes/Product Routes/products.routes"));
@@ -39,6 +40,11 @@ const verifyCallback = (accessToken, refreshToken, profile, done) => {
 };
 exports.app.use((0, cors_1.default)());
 passport_1.default.use(new passport_google_oauth20_1.Strategy(AUTH_OPTIONS, verifyCallback));
+exports.app.use((0, cookie_session_1.default)({
+    name: 'session',
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: 
+}));
 exports.app.use(passport_1.default.initialize());
 //for cross origin resoursce sharing
 exports.app.use((0, morgan_1.default)("combined"));
