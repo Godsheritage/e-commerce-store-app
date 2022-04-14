@@ -16,17 +16,43 @@ const passport_google_oauth20_1 = require("passport-google-oauth20");
 const products_routes_1 = __importDefault(require("./routes/Product Routes/products.routes"));
 exports.app = (0, express_1.default)();
 dotenv_1.default.config();
+//options for the API config
 const config = {
     CLIENT_ID: process.env.CLIENT_ID,
     CLIENT_SECRET: process.env.CLIENT_SECRET,
+    COOKIE_KEY_1: process.env.COOKIE_KEY_1,
+    COOKIE_KEY_2: process.env.COOKIE_KEY_2,
 };
+// options for passport authentication
 const AUTH_OPTIONS = {
     clientID: config.CLIENT_ID,
     clientSecret: config.CLIENT_SECRET,
     callbackURL: "/auth/google/callback",
 };
+//passport  - google oauth verify callback function
+const verifyCallback = (accessToken, refreshToken, profile, done) => {
+    console.log(`the user profile is ${profile}`);
+    done(null, profile);
+};
+exports.app.use((0, cors_1.default)());
+passport_1.default.use(new passport_google_oauth20_1.Strategy(AUTH_OPTIONS, verifyCallback));
+//to save the session to the cookie
+passport_1.default.serializeUser((user, done) => {
+    done(null, user.id);
+});
+// to read the session from the cookie
+passport_1.default.deserializeUser((id, done) => {
+    done(null, id);
+});
+exports.app.use((0, cookie_session_1.default)({
+    name: "session",
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [config.COOKIE_KEY_1, config.COOKIE_KEY_2],
+}));
+exports.app.use(passport_1.default.initialize());
+exports.app.use(passport_1.default.session());
 const checkLoggedIn = (req, res, next) => {
-    const isLoggedIn = true;
+    const isLoggedIn = req.isAuthenticated() && req.user;
     if (!isLoggedIn) {
         return res.status(400).json({
             error: "You must be logged in first",
@@ -34,18 +60,6 @@ const checkLoggedIn = (req, res, next) => {
     }
     next();
 };
-const verifyCallback = (accessToken, refreshToken, profile, done) => {
-    console.log(`the user profile is ${profile}`);
-    done(null, profile);
-};
-exports.app.use((0, cors_1.default)());
-passport_1.default.use(new passport_google_oauth20_1.Strategy(AUTH_OPTIONS, verifyCallback));
-exports.app.use((0, cookie_session_1.default)({
-    name: 'session',
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: 
-}));
-exports.app.use(passport_1.default.initialize());
 //for cross origin resoursce sharing
 exports.app.use((0, morgan_1.default)("combined"));
 exports.app.get("/auth/google", passport_1.default.authenticate("google", {
@@ -54,7 +68,7 @@ exports.app.get("/auth/google", passport_1.default.authenticate("google", {
 exports.app.get("/auth/google/callback", passport_1.default.authenticate("google", {
     failureRedirect: "/failure",
     successRedirect: "/",
-    session: false,
+    session: true,
 }));
 // logout function
 exports.app.get("/auth/logout", (req, res) => {
