@@ -25,6 +25,9 @@
   },
   "homepage": "https://github.com/Godsheritage/e-commerce-store-app#readme",
   "dependencies": {
-    "helmet": "^5.0.2"
+    "dotenv": "^16.0.0",
+    "helmet": "^5.0.2",
+    "passport": "^0.5.2",
+    "passport-google-oauth20": "^2.0.0"
   }
 }
