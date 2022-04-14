@@ -27,7 +27,7 @@ mongoose.connection.on("eror", (err) => {
 });
 
 const startServer = async () => {
-  await mongoose.connect(MONGO_URL);
+  // await mongoose.connect(MONGO_URL);
 
   server.listen(PORT, () => {
     console.log(`server is listening at port ${PORT}...`);
