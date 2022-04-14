@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/Godsheritage/e-commerce-store-app/issues"
   },
-  "homepage": "https://github.com/Godsheritage/e-commerce-store-app#readme"
+  "homepage": "https://github.com/Godsheritage/e-commerce-store-app#readme",
+  "dependencies": {
+    "cookie-session": "^2.0.0"
+  }
 }

@@ -44,17 +44,6 @@ const verifyCallback = (
   done(null, profile);
 };
 
-app.use(helmet());
-
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     useDefaults: true,
-//     directives: {
-//       "img-src": ["'self'", "https: data:"]
-//     }
-//   })
-// )
-
 app.use(cors());
 passport.use(new Strategy(AUTH_OPTIONS, verifyCallback));
 
@@ -81,7 +70,7 @@ app.get(
 );
 
 // logout function
-app.get("/logout", (req, res) => {
+app.get("/auth/logout", (req, res) => {
   req.logOut();
 
   return res.status(200).redirect("/");

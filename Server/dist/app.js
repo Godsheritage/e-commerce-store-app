@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
 const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
-const helmet_1 = __importDefault(require("helmet"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const morgan_1 = __importDefault(require("morgan"));
 const passport_1 = __importDefault(require("passport"));
@@ -38,15 +37,6 @@ const verifyCallback = (accessToken, refreshToken, profile, done) => {
     console.log(`the user profile is ${profile}`);
     done(null, profile);
 };
-exports.app.use((0, helmet_1.default)());
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     useDefaults: true,
-//     directives: {
-//       "img-src": ["'self'", "https: data:"]
-//     }
-//   })
-// )
 exports.app.use((0, cors_1.default)());
 passport_1.default.use(new passport_google_oauth20_1.Strategy(AUTH_OPTIONS, verifyCallback));
 exports.app.use(passport_1.default.initialize());
@@ -61,7 +51,7 @@ exports.app.get("/auth/google/callback", passport_1.default.authenticate("google
     session: false,
 }));
 // logout function
-exports.app.get("/logout", (req, res) => {
+exports.app.get("/auth/logout", (req, res) => {
     req.logOut();
     return res.status(200).redirect("/");
 });

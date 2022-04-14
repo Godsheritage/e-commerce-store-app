@@ -22,8 +22,9 @@ const Navbar: React.FC = () => {
             {cartItems.length}
           </span>
         </Link>
-      </ul>
       <a href = 'auth/google'> Login</a>
+      <a href = 'auth/logout'> logout</a>
+      </ul>
     </nav>
   );
 };
