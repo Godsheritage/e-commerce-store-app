@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { itemProps, contextTypes } from "../shared/types";
+import { contextTypes, productTypes } from "../shared/types";
 import ProductContext from "../context/ProductContext";
 
-const ShopItems: React.FC<itemProps> = ({ items }) => {
+const ShopItems: React.FC<any> = ({ items }) => {
   const { addToCart, fetchSingleProduct } = useContext(
     ProductContext
   ) as contextTypes;
@@ -17,7 +17,7 @@ const ShopItems: React.FC<itemProps> = ({ items }) => {
           onClick={() => fetchSingleProduct(items.id)}
         />
         <div className="card-body">
-          <h5 className="card-title">{items.name}</h5>
+          <h5 className="card-title">{items.title}</h5>
           <p className="itemsPrice">${items.price}</p>
           <button className="btn btn-primary" onClick={() => addToCart(items)}>
             Add To Cart

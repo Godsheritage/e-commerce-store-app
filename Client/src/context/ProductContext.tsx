@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import React, { useState, createContext, useEffect } from "react";
 import { productTypes, contextTypes, cartTypes } from "../shared/types";
+import { isTemplateExpression } from "typescript";
 
 const ProductContext = createContext<contextTypes | null>(null);
 const serverURL = 'https://localhost:5000'
@@ -10,7 +11,7 @@ const serverURL = 'https://localhost:5000'
 export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
   const navigate = useNavigate();
 
-  const [products, setProducts] = useState<productTypes[]>([]);
+  const [products, setProducts] = useState<productTypes["items"][]>([]);
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
@@ -22,7 +23,8 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   //to fetch all products from the backend API
   const fetchProducts = async () => {
-    const response = await axios.get(`${serverURL}/productData`);
+    // const response = await axios.get(`${serverURL}/productData`);
+    const response = await axios.get("https://fakestoreapi.com/products");
     const data = response.data;
     setProducts(data);
     setIsLoading(false)
@@ -34,16 +36,17 @@ export const ContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 
   // to fetch a single product from the back end API
   const fetchSingleProduct = async (id: string) => {
-    const response = await axios.get(`${serverURL}/productData/${id}`);
-    setSingleProd(response.data);
-    navigate(`/Products/${response.data.name}`);
+    // const response = await axios.get(`${serverURL}/productData/${id}`);
+    const response = products.find((item) => item.id === id)
+    setSingleProd(response);
+    navigate(`/Products/${response!.title}`);
   };
 
   // Add items to the cart
-  const addToCart = async (items: productTypes) => {
+  const addToCart = async (items: productTypes["items"]) => {
     const updCart: cartTypes = {
       id: uuidv4(),
-      name: items.name,
+      name: items.title,
       image: items.image,
       price: items.price,
     };

@@ -1,16 +1,17 @@
+// import { productTypes } from './types';
+
+// export interface productTypes {
+//   id: string;
+//   name: string;
+//   image: string;
+//   description: string;
+//   price: number;
+// }
 
 export interface productTypes {
-  id: string;
-  name: string;
-  image: string;
-  description: string;
-  price: number;
-}
-
-export interface itemProps {
     items: {
         id: string;
-        name: string;
+        title: string;
         image: string;
         description: string;
         price: number;
@@ -27,8 +28,8 @@ export interface singleProdType   {
 }
 
 export interface contextTypes {
-    products: productTypes[];
-    addToCart: (items:productTypes) => void;
+    products: productTypes["items"][];
+    addToCart: (items:productTypes["items"]) => void;
     cartItems: cartTypes[];
     removeItem: (id:string) => void
     sum: any;
